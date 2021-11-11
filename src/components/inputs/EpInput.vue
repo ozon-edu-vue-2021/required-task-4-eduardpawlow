@@ -1,8 +1,8 @@
 <template>
-  <div class="ep-input-container">
+  <div class="ep-input-container" :class="{ error }">
     <label class="ep-input__label" :for="name">{{ label }}</label>
     <input :id="name" :value="value" v-on="innerListeners" v-bind="$attrs" />
-    <div class="error"></div>
+    <div v-if="error" class="error-msg">{{ error }}</div>
   </div>
 </template>
 
@@ -19,6 +19,10 @@ export default {
       default: "",
     },
     value: {
+      type: String,
+      default: "",
+    },
+    error: {
       type: String,
       default: "",
     },
@@ -63,5 +67,17 @@ input {
 
 input:focus {
   border-color: #265af7;
+}
+
+.error-msg {
+  margin-top: 4px;
+  padding: 0 4px;
+  font-size: 12px;
+
+  color: rgb(196, 1, 1);
+}
+
+.ep-input-container.error input {
+  border: 2px solid rgb(196, 1, 1);
 }
 </style>

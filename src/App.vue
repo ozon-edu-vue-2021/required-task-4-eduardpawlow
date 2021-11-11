@@ -29,7 +29,7 @@ export default {
 html,
 body,
 #app {
-  height: 100%;
+  min-height: 100%;
 }
 
 * {
@@ -52,6 +52,10 @@ body,
   cursor: pointer;
 }
 
+.btn:active {
+  opacity: 0.9;
+}
+
 .btn.btn--primary {
   padding: 10px 30px;
   background: #265af7;
@@ -60,11 +64,14 @@ body,
   color: #fff;
 }
 
-.btn:hover {
+.btn.btn--primary:hover {
   background: #0742f3;
 }
+.btn.btn--ternary {
+  color: #0742f3;
+}
 
-.btn:active {
-  opacity: 0.9;
+.btn.btn--ternary:hover {
+  color: #265af7;
 }
 </style>

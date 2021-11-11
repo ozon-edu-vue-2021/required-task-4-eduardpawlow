@@ -1,7 +1,7 @@
 <template>
   <div
     class="ep-select-container"
-    :class="{ active: isActive }"
+    :class="{ active: isActive, error }"
     v-click-outside="closeDrawer"
   >
     <label>{{ label }}</label>
@@ -11,6 +11,7 @@
       </div>
       <div class="arrow"></div>
     </div>
+    <div v-if="error" class="error-msg">{{ error }}</div>
 
     <div v-if="isActive" class="drawer">
       <div v-if="withFilter" class="filter">
@@ -40,7 +41,6 @@
   </div>
 </template>
 
-
 <script>
 export default {
   model: {
@@ -67,6 +67,10 @@ export default {
     withFilter: {
       type: Boolean,
       default: false,
+    },
+    error: {
+      type: String,
+      default: "",
     },
   },
   data() {
@@ -204,5 +208,17 @@ label {
 .ep-select-container.active .select-input .arrow {
   top: 15px;
   transform: rotate(225deg);
+}
+
+.error-msg {
+  margin-top: 4px;
+  padding: 0 4px;
+  font-size: 12px;
+
+  color: rgb(196, 1, 1);
+}
+
+.ep-select-container.error .select-input {
+  border: 2px solid rgb(196, 1, 1);
 }
 </style>
